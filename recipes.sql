@@ -9,10 +9,11 @@ USE `recipes`;
  * RECIPES
  */
 CREATE TABLE `recipes` (
-  `recipe_id`         int(11) unsigned  NOT NULL AUTO_INCREMENT,
+  `recipe_id`           int(11) unsigned  NOT NULL AUTO_INCREMENT,
+  `recipe_category_id` int(11) unsigned  NOT NULL,
   `name`              varchar(40)       NOT NULL,
   `description`       varchar(2048)       NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`recipe_id`)
 );
 
 /*
@@ -67,7 +68,16 @@ CREATE TABLE `recipe_ingredients` (
  */
 CREATE TABLE `recipe_directions` (
   `recipe_id`     int(11) unsigned  NOT NULL,
-  `direction_id`  int(11) unsigned  NOT NULL
+  `direction_id`  int(11) unsigned  NOT NULL,
+  `sequence`      int               NOT NULL
 );
 
+/*
+ * RECIPE_CATEGORIES
+ */
+CREATE TABLE `recipe_categories` (
+    `recipe_category_id`    int(11) unsigned  NOT NULL AUTO_INCREMENT,
+    `category`              varchar(60) NOT NULL,
+    PRIMARY KEY (`recipe_category_id`)
+)
 
