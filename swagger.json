@@ -1,0 +1,390 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "This is a Recipe REST API server. You can find out more about this backend JSON server at [https://github.com/fortytwobinary/recipes](https://github.com/fortytwobinary/recipes) ",
+    "version": "1.0.0",
+    "title": "Recipes",
+    "termsOfService": "http://swagger.io/terms/",
+    "contact": {
+      "email": "dlwhitehurst@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/v1/recipes",
+  "tags": [
+    {
+      "name": "REST API",
+      "description": "Operations for Recipes",
+      "externalDocs": {
+        "description": "Find out more",
+        "url": "http://swagger.io"
+      }
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/categories": {
+      "get": {
+        "tags": [
+          "category resource"
+        ],
+        "summary": "Get Recipe Categories",
+        "description": "Get a JSON collection or array of Recipe Categories",
+        "operationId": "getRecipeCategories",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Category"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "category resource"
+        ],
+        "summary": "Add a new Recipe Category",
+        "description": "",
+        "operationId": "addRecipeCategory",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Recipe Category object to be added to the system",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          }
+        ],
+        "responses": {
+          "405": {
+            "description": "Invalid input"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "category resource"
+        ],
+        "summary": "Deletes all Recipe Categories",
+        "description": "",
+        "operationId": "deleteAllRecipeCategories",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        }
+      }
+    },
+    "/categories/{categoryId}": {
+      "get": {
+        "tags": [
+          "category resource"
+        ],
+        "summary": "Find Recipe Category by ID",
+        "description": "Returns a single Recipe Category",
+        "operationId": "getRecipeCategoryById",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "ID of Recipe Category to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "$ref": "#/definitions/Category"
+            }
+          },
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "category resource"
+        ],
+        "summary": "Update an existing Recipe Category",
+        "description": "",
+        "operationId": "updateRecipeCategoryById",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "ID of Recipe Category to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "400": {
+            "description": "Bad Request"
+          },
+          "404": {
+            "description": "Not Found"
+          },
+          "405": {
+            "description": "Validation Exception"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "category resource"
+        ],
+        "summary": "Deletes a Recipe Category by ID",
+        "description": "",
+        "operationId": "deleteRecipeCategory",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "categoryId",
+            "in": "path",
+            "description": "ID of Recipe Category to return",
+            "required": true,
+            "type": "integer",
+            "format": "int64"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Invalid ID Supplied"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    },
+    "/directions": {
+      "get": {
+        "tags": [
+          "direction resource"
+        ],
+        "summary": "Get all Recipe Directions",
+        "description": "Get a JSON collection or array of Recipe Directions",
+        "operationId": "getRecipeDirections",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Direction"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/ingredients": {
+      "get": {
+        "tags": [
+          "ingredient resource"
+        ],
+        "summary": "Get all Recipe Ingredients",
+        "description": "Get a JSON collection or array of Recipe Ingredients",
+        "operationId": "getRecipeIngredients",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Ingredient"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/units": {
+      "get": {
+        "tags": [
+          "unit resource"
+        ],
+        "summary": "Get all Measurement Units",
+        "description": "Get a JSON collection or array of Measurement Units",
+        "operationId": "getMeasurementUnits",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MeasurementUnit"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/quantities": {
+      "get": {
+        "tags": [
+          "quantity resource"
+        ],
+        "summary": "Get all Measurement Quantities",
+        "description": "Get a JSON collection or array of Measurement Quantities",
+        "operationId": "getMeasurementQuantities",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/MeasurementQty"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Category": {
+      "type": "object",
+      "required": [
+        "category"
+      ],
+      "properties": {
+          "recipe_category_id": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "category": {
+          "type": "string",
+          "example": "Cakes and Cookies"
+        }
+      }
+    },
+    "Direction": {
+      "type": "object",
+      "required": [
+        "direction"
+      ],
+      "properties": {
+        "direction_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "direction": {
+          "type": "string",
+          "example": "Preheat oven to 425 degrees"
+        }
+      }
+    },
+    "Ingredient": {
+      "type": "object",
+      "required": [
+        "ingredient_name"
+      ],
+      "properties": {
+        "ingredient_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "ingredient_name": {
+          "type": "string",
+          "example": "Olive Oil"
+        }
+      }
+    },
+    "MeasurementUnit": {
+      "type": "object",
+      "required": [
+        "unit"
+      ],
+      "properties": {
+        "measurement_unit_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "unit": {
+          "type": "string",
+          "example": "tbsp"
+        }
+      }
+    },
+    "MeasurementQty": {
+      "type": "object",
+      "required": [
+        "qty"
+      ],
+      "properties": {
+        "measurement_qty_id": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "qty": {
+          "type": "string",
+          "example": "3-1/2"
+        }
+      }
+    }
+  },
+  "externalDocs": {
+    "description": "Find out more about Swagger",
+    "url": "http://swagger.io"
+  }
+}
