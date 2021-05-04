@@ -34,9 +34,10 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0",
     "jasmine": "^3.3.1",
-    "jest": "^24.5.0",
+    "jest": "^24.9.0",
     "jsdoc": "^3.5.5",
     "jshint": "^2.10.1",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.18.10",
+    "supertest": "^6.1.3"
   }
 }

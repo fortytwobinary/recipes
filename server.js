@@ -36,7 +36,8 @@ app.get("/", (req, res) => {
     res.json({ message: "Welcome to the Recipes API application." });
 });
 
-//require("./app/routes/recipe.routes.js")(app);
+require("./app/routes/category.routes.js")(app);
+require("./app/routes/direction.routes.js")(app);
 
 // swagger path to api documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
