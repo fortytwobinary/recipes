@@ -38,12 +38,15 @@ app.get("/", (req, res) => {
 
 require("./app/routes/category.routes.js")(app);
 require("./app/routes/direction.routes.js")(app);
+require("./app/routes/ingredient.routes.js")(app);
 
 // swagger path to api documentation
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 // set port, listen for requests
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}.`);
-});
+//const PORT = process.env.PORT || 3000;
+//app.listen(PORT, () => {
+//    console.log(`Server is running on port ${PORT}.`);
+//});
+
+module.exports = app
